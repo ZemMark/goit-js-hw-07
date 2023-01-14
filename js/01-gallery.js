@@ -37,22 +37,31 @@ container.onclick = (e) => {
   if (e.target.nodeName !== "IMG") {
     return;
   }
-  window.addEventListener("keydown", onEcsPress);
-  console.log(e.target.src);
-  const viewBigPhoto = basicLightbox
-    .create(
-      `
-    <img src="${e.target.src}">
+  const showOriginalPhoto = basicLightbox.create(
     `
-    )
-    .show();
-  console.log(viewBigPhoto);
-  viewBigPhoto.bind(onEcsPress);
+    <img src="${e.target.src}">
+    `,
+    {
+      onShow: (showOriginalPhoto) => {
+        console.log("sdvsdv");
+      },
+    }
+  );
+  showOriginalPhoto.show();
+
+  window.addEventListener("keydown", onEcsPress);
+
+  function onEcsPress(e) {
+    if (e.code === "Escape") {
+      console.log("press esc btn");
+      showOriginalPhoto.close();
+      // console.log(viewBigPhoto.visible);
+    }
+  }
 };
 
-function onEcsPress(e) {
-  if (e.code === "Escape") {
-    // viewBigPhoto.close();
-    console.log(e.target);
-  }
-}
+// function onEcsPress(e) {
+//   if (e.code === "Escape") {
+//     console.log(e.target);
+//   }
+// }
