@@ -31,12 +31,13 @@ container.insertAdjacentHTML("beforeend", gallery);
 //   // }
 //   // console.log("you're good!");
 // }
+
 container.onclick = (e) => {
   e.preventDefault();
-  window.addEventListener("keydown", onEcsPress);
   if (e.target.nodeName !== "IMG") {
     return;
   }
+  window.addEventListener("keydown", onEcsPress);
   console.log(e.target.src);
   const viewBigPhoto = basicLightbox
     .create(
@@ -46,10 +47,12 @@ container.onclick = (e) => {
     )
     .show();
   console.log(viewBigPhoto);
+  viewBigPhoto.bind(onEcsPress);
 };
 
 function onEcsPress(e) {
   if (e.code === "Escape") {
+    // viewBigPhoto.close();
     console.log(e.target);
   }
 }
