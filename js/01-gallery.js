@@ -46,10 +46,10 @@ container.onclick = (e) => {
         window.addEventListener("keydown", onEcsPress);
         console.log("sdvsdv");
       },
-    },
-    {
+
       onClose: (showOriginalPhoto) => {
         window.removeEventListener("keydown", onEcsPress);
+        console.log("closed");
       },
     }
   );
