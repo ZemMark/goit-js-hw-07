@@ -37,6 +37,7 @@ var lightbox = new SimpleLightbox(".gallery a", {
   captionDelay: "250ms",
   captionsData: "alt",
   captionSelector: "img",
+  // scaleImageToRatio: true,
 });
 // lightbox.on("shown.simplelightbox", function (e) {
 //   console.log(document.querySelector(".sl-overlay"));

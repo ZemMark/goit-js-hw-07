@@ -39,22 +39,26 @@ container.onclick = (e) => {
   }
   const showOriginalPhoto = basicLightbox.create(
     `
-    <img src="${e.target.src}">
-    `,
+        <img src="${e.target.src}">
+        `,
     {
       onShow: (showOriginalPhoto) => {
+        window.addEventListener("keydown", onEcsPress);
         console.log("sdvsdv");
+      },
+    },
+    {
+      onClose: (showOriginalPhoto) => {
+        window.removeEventListener("keydown", onEcsPress);
       },
     }
   );
   showOriginalPhoto.show();
-
-  window.addEventListener("keydown", onEcsPress);
-
   function onEcsPress(e) {
     if (e.code === "Escape") {
       console.log("press esc btn");
       showOriginalPhoto.close();
+      window.removeEventListener("keydown", onEcsPress);
       // console.log(viewBigPhoto.visible);
     }
   }
